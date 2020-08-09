@@ -17,7 +17,7 @@ public class IdleState : Still
     public override void LogicUpdate()
     {
         base.LogicUpdate();
-        if (Input.GetMouseButtonDown(1) && player.walkTo == null)
+        if (Input.GetMouseButtonDown(1) && player.walkTo == null && player.isItMyTurn)
             player.PlayerSM.ChangeState(player.walking);
     }
 

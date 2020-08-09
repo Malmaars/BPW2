@@ -28,6 +28,7 @@ public class WalkingState : Moving
                 if (player.walkTo.childCount == 0)
                 {
                     UnityEngine.Object.Destroy(player.walktoParent.gameObject);
+                    player.turnPoints--;
                     player.PlayerSM.ChangeState(player.Idle);
                     /*foreach (GameObject temp in player.highlights)
                     {
@@ -72,14 +73,14 @@ public class WalkingState : Moving
 
         //Round it to the tile you click on
         Vector2 roundedPosition = new Vector2(Mathf.RoundToInt(worldPosition.x), Mathf.RoundToInt(worldPosition.y));
-        Debug.Log(roundedPosition);
-        Debug.Log(Physics2D.OverlapPoint(roundedPosition, player.TileLayer));
+        //Debug.Log(roundedPosition);
+        //Debug.Log(Physics2D.OverlapPoint(roundedPosition, player.TileLayer));
 
         //If you click on a walkable tile, walk to it
         if (Physics2D.OverlapPoint(roundedPosition, player.TileLayer) != null && Physics2D.OverlapPoint(roundedPosition, player.TileLayer).gameObject.tag == "Walkable")
         {
             movePosition = roundedPosition;
-            Debug.Log(Physics2D.OverlapPoint(roundedPosition, player.TileLayer).gameObject.tag);
+            //Debug.Log(Physics2D.OverlapPoint(roundedPosition, player.TileLayer).gameObject.tag);
             if (new Vector2(player.transform.position.x, player.transform.position.y) != movePosition)
             {
                 //We find the path we need to walk

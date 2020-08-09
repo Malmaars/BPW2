@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class bullet : MonoBehaviour
 {
-    private void OnCollisionEnter2D(Collision2D collision)
+    public Vector2 startLoc;
+    public Vector2 target;
+    private void Update()
     {
-        Destroy(this.gameObject);
+        this.transform.position = Vector3.MoveTowards(transform.position, target, 5f);
     }
 }

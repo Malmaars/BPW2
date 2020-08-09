@@ -20,7 +20,7 @@ public class Still : PlayerState
 
         foreach (Vector2 singleCover in player.cover)
         {
-            if (Physics2D.OverlapPoint(singleCover, player.TileLayer) != null && Physics2D.OverlapPoint(singleCover, player.TileLayer).gameObject.tag == "Unwalkable")
+            if (Physics2D.OverlapPoint(singleCover, player.TileLayer) == null || Physics2D.OverlapPoint(singleCover, player.TileLayer).gameObject.tag == "Unwalkable")
             {
                 player.shields.Add(UnityEngine.Object.Instantiate(player.shield, singleCover, new Quaternion(0, 0, 0, 0)));
                 if(new Vector2(player.transform.position.x + 1, player.transform.position.y) == singleCover)

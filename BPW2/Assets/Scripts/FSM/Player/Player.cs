@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class Player : MonoBehaviour
@@ -25,10 +26,15 @@ public class Player : MonoBehaviour
     public GameObject FreeView;
     public GameObject healthVisual;
 
+    public ParticleSystem shootParticles;
+    public ParticleSystem YouTookDamage;
+
     public int RoomsDone = 0;
     public int Kills = 0;
     public GameObject roomsCleared;
     public GameObject PawnKilled;
+
+    public GameObject availableTilePrefab;
 
     public Transform walkTo;
     public Transform walktoParent;
@@ -39,6 +45,7 @@ public class Player : MonoBehaviour
 
     public List<GameObject> enemyObjects;
     public int enemyNumber;
+
 
     public PlayerStateMachine PlayerSM;
     public WalkingState walking;
@@ -82,6 +89,7 @@ public class Player : MonoBehaviour
         {
             StartCoroutine(wachtVoorSwitch("Enemy Turn"));
             isItMyTurn = false;
+            PlayerSM.ChangeState(still);
         }
 
         percentageVisual.transform.GetComponent<TextMeshProUGUI>().text = (hitPercentage.ToString() + "%");
@@ -89,6 +97,11 @@ public class Player : MonoBehaviour
         roomsCleared.transform.GetComponent<TextMeshProUGUI>().text = ("Floors Cleared " + RoomsDone.ToString());
         PawnKilled.transform.GetComponent<TextMeshProUGUI>().text = ("Enemy Pawn Killed: " + Kills.ToString());
         healthVisual.transform.GetComponent<TextMeshProUGUI>().text = ("Health: " + health.ToString());
+
+        if(health < 0)
+        {
+            SceneManager.LoadScene("GameOver");
+        }
 
     }
 

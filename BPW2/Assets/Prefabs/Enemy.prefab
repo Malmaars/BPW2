@@ -99,6 +99,8 @@ MonoBehaviour:
   hitPercentage: 0
   walkTo: {fileID: 0}
   walktoParent: {fileID: 0}
+  shootParticles: {fileID: 1651064591492567619, guid: 3a605e8bbffe9f849a9c50b3899ea20e,
+    type: 3}
   pathFinder: {fileID: 0}
   player: {fileID: 0}
   coverShieldVisual: {fileID: 8190321924163136895, guid: f785d95613080b847a11082d068e2039,

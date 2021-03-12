@@ -81,7 +81,7 @@ public class WalkingState : Moving
         {
             movePosition = roundedPosition;
             //Debug.Log(Physics2D.OverlapPoint(roundedPosition, player.TileLayer).gameObject.tag);
-            if (new Vector2(player.transform.position.x, player.transform.position.y) != movePosition)
+            if (new Vector2(player.transform.position.x, player.transform.position.y) != movePosition && (Vector2.Distance(roundedPosition, player.transform.position) < 3.5f))
             {
                 //We find the path we need to walk
                 player.walkTo = player.pathFinder.findPath(player.transform.position, movePosition);

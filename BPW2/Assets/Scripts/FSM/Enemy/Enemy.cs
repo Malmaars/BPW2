@@ -10,6 +10,8 @@ public class Enemy : MonoBehaviour
     public Transform walkTo;
     public Transform walktoParent;
 
+    public ParticleSystem shootParticles;
+
     public Pathfinding2 pathFinder;
     public Player player;
 

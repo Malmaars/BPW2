@@ -3,7 +3,26 @@ guid: df4d6e748940d9944a05c4d4f8041d8e
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - turnPointsVisual: {instanceID: 0}
+  - pathfinderObject: {instanceID: 0}
+  - pathFinder: {instanceID: 0}
+  - highlight: {instanceID: 0}
+  - TargetPrefab: {instanceID: 0}
+  - percentageVisual: {instanceID: 0}
+  - shield: {instanceID: 0}
+  - TurnUI: {instanceID: 0}
+  - FreeView: {instanceID: 0}
+  - healthVisual: {instanceID: 0}
+  - shootParticles: {fileID: 1651064591492567619, guid: 3a605e8bbffe9f849a9c50b3899ea20e,
+      type: 3}
+  - YouTookDamage: {fileID: 8114773419709169115, guid: 05d2a5315c2523846a381a9021177d6e,
+      type: 3}
+  - roomsCleared: {instanceID: 0}
+  - PawnKilled: {instanceID: 0}
+  - availableTilePrefab: {instanceID: 0}
+  - walkTo: {instanceID: 0}
+  - walktoParent: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

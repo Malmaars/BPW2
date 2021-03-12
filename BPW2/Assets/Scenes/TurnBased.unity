@@ -2041,10 +2041,16 @@ MonoBehaviour:
   TurnUI: {fileID: 978988916}
   FreeView: {fileID: 530609100}
   healthVisual: {fileID: 1020593261}
+  shootParticles: {fileID: 1651064591492567619, guid: 3a605e8bbffe9f849a9c50b3899ea20e,
+    type: 3}
+  YouTookDamage: {fileID: 8114773419709169115, guid: 05d2a5315c2523846a381a9021177d6e,
+    type: 3}
   RoomsDone: 0
   Kills: 0
   roomsCleared: {fileID: 1419902247}
   PawnKilled: {fileID: 2118846405}
+  availableTilePrefab: {fileID: 8562520903372661087, guid: 951e4260025b9e9478fc1e16a3e6e6dc,
+    type: 3}
   walkTo: {fileID: 0}
   walktoParent: {fileID: 0}
   cover: []
@@ -2094,7 +2100,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 32c4ea15af555c54cbfb71ff37e4470c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -12950,7 +12956,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1594370964
 RectTransform:
   m_ObjectHideFlags: 0

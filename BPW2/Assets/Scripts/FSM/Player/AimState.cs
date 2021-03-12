@@ -90,7 +90,33 @@ public class AimState : Still
         Debug.Log(Smallhit);
         if (Random.value < Smallhit)
         {
+            GameObject shootingAt = enemies[ViewingEnemy];
+            Vector2 direction = shootingAt.transform.position - player.transform.position;
             enemies[ViewingEnemy].GetComponent<Enemy>().health -= 100;
+
+            ParticleSystem particleSystem = Object.Instantiate(player.shootParticles);
+            ParticleSystem.MainModule m = particleSystem.main;
+            ParticleSystem.ShapeModule shape = particleSystem.shape;
+
+            float distance = Mathf.Sqrt(direction.x * direction.x + direction.y * direction.y);
+            float lifetime = distance * (1f / player.shootParticles.main.startSpeed.constant);
+            m.startLifetime = lifetime;
+
+            if (direction.x < 0)
+            {
+                m.startRotation = 360 - (Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg * -1);
+                shape.rotation = new Vector3(0, 360 - (Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg * -1));
+            }
+            else
+            {
+                m.startRotation = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
+                shape.rotation = new Vector3(0, Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg);
+            }
+
+            m.startRotation = shape.rotation.y;
+            particleSystem.gameObject.transform.position = player.transform.position;
+
+            particleSystem.Play();
         }
 
         enemies.Remove(enemies[ViewingEnemy]);

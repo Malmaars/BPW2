@@ -48,7 +48,39 @@ public class EnemyAiming : EnemyStill
         {
             if (Random.value < enemy.hitPercentage / 100)
             {
+                //play particle effect aimed at enemy
+                //to set the distance: lifetime 1 means 30 distance, so 1/30 is 1.
+                //lifetime = distance *1/30
+                Debug.Log("Schietschiet");
+
+                ParticleSystem particleSystem = Object.Instantiate(enemy.shootParticles);
+                ParticleSystem.MainModule m = particleSystem.main;
+                ParticleSystem.ShapeModule shape = particleSystem.shape;
+
+                float distance = Mathf.Sqrt(direction.x * direction.x + direction.y * direction.y);
+                float lifetime = distance * (1f / enemy.shootParticles.main.startSpeed.constant);
+                m.startLifetime = lifetime;
+
+                if(direction.x < 0)
+                {
+                    m.startRotation = 360 - (Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg * -1);
+                   shape.rotation = new Vector3(0, 360 - (Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg * -1));
+                }
+                else
+                {
+                    m.startRotation = Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg;
+                   shape.rotation = new Vector3(0, Mathf.Atan2(direction.x, direction.y) * Mathf.Rad2Deg);
+                }
+
+                m.startRotation = shape.rotation.y;
+                particleSystem.gameObject.transform.position = enemy.transform.position;
+
+                particleSystem.Play();
+
                 enemy.player.health -= 20;
+                ParticleSystem damageParticles = Object.Instantiate(enemy.player.YouTookDamage);
+                damageParticles.transform.position = enemy.player.transform.position;
+                damageParticles.Play();
             }
         }
 
